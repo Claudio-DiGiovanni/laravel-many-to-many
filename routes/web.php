@@ -33,6 +33,6 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', 'PageController@index')->name('home');
         Route::resource('tags', 'TagController');
-        Route::resource('posts', 'PostController');
         Route::resource('categories', 'CategoryController');
+        Route::resource('posts', 'PostController');
 });
