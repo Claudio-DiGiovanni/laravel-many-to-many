@@ -119,5 +119,14 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        function showPopup() {
+            document.querySelector(".background").classList.add("d-flex");
+        };
+        function hidePopup() {
+            document.querySelector(".background").classList.remove("d-flex")
+        }
+    </script>
 </body>
 </html>

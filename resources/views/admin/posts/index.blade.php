@@ -30,11 +30,20 @@
                         <td class="d-flex justify-content-around">
                             <a href="{{ route('admin.posts.show', ['post' => $post]) }}" class="btn btn-primary">Visita</a>
                             <a href="{{ route('admin.posts.edit', ['post' => $post]) }}" class="btn btn-warning">Edita</a>
-                            <form action="{{ route('admin.posts.destroy', ['post' => $post]) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-danger">Elimina</button>
-                            </form>
+                            <button id="delete" class="btn btn-danger" onclick="showPopup()">Elimina</button>
+                            <div class="background">
+                                <div class="popup">
+                                    <h5 class="w-100 text-center mb-3">Sei sicuro di voler eliminarlo?</h5>
+                                    <form action="{{ route('admin.posts.destroy', ['post' => $post]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger">Elimina</button>
+                                    </form>
+                                    <button class="btn btn-secondary" id="retry" onclick="hidePopup()">Annulla</button>
+                                </div>
+                            </div>
+
+
                         </td>
                        @endauth
                     </tr>
