@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    private $validation = [
+    private $validations = [
         'slug' => 'required|string|max:50',
         'name' => 'required|string|max:50',
     ];

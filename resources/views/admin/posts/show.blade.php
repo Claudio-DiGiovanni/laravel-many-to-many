@@ -10,7 +10,7 @@
             <h2>Tags</h2>
             <ul class="d-flex list-unstyled">
                 @foreach ($post->tags as $tag)
-                    <li class="p-4"><a class="text-decoration-none" href="#">{{ $tag->name }}{{ $loop->last ? '' : ', ' }}</a></li>
+                    <li class="p-4"><a class="text-decoration-none" href="{{route('admin.tags.show', ['tag' => $tag])}}">{{ $tag->name }}{{ $loop->last ? '' : ', ' }}</a></li>
                 @endforeach
             </ul>
         @endif
