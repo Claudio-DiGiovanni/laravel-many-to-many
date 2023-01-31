@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ route('admin.tags.store', ['tag' => $tag]) }}" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+    <form action="{{ route('admin.tags.update', ['tag' => $tag]) }}" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+        @method('PUT')
         @csrf
-
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
             <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug', $tag->slug) }}">
