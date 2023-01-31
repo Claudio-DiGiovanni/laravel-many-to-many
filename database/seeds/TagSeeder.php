@@ -13,7 +13,7 @@ class TagSeeder extends Seeder
     public function run()
     {
         $tags = [
-            'php', 'Laravel 7', 'VueJs', 'Cucina moderna', 'Piatti tipici', 'Roma', 'Venezia', 'Emilia Romagna', 'Acqua minerale', 'Valle d\'Aosta',
+            'php', 'laravel', 'html', 'javascript', 'python', 'vue', 'bootstrap', 'react', 'java', 'css', 'ruby',
         ];
 
         foreach ($tags as $tag) {
@@ -25,10 +25,3 @@ class TagSeeder extends Seeder
     }
 }
 
-
-
-
-
-
-
-//'php', 'laravel', 'html', 'javascript', 'python', 'vue', 'bootstrap', 'react', 'java', 'css', 'ruby',

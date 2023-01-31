@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    private $validation = [
+        'slug' => 'required|string|max:50',
+        'name' => 'required|string|max:50',
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -25,7 +30,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -36,7 +41,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+        $tag = new Tag;
+        $tag->slug = $data['slug'];
+        $tag->name = $data['name'];
+        $tag->save();
+        return redirect()->route('admin.tags.show', ['tag' => $tag]);
     }
 
     /**
@@ -45,9 +56,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        //
+        return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -56,9 +67,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -68,9 +79,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate($this->validations);
+        $data = $request->all();
+        $tag->slug = $data['slug'];
+        $tag->name = $data['name'];
+        $tag->update();
+        return redirect()->route('admin.tags.show', ['tag' => $tag]);
     }
 
     /**
@@ -79,7 +95,7 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
         //
     }

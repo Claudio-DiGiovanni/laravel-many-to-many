@@ -9,6 +9,7 @@
                     <th class="text-center" scope="col">Slug</th>
                     <th class="text-center" scope="col">Titolo</th>
                     <th class="text-center" scope="col">Categoria</th>
+                    <th class="text-center" scope="col">Tags</th>
                     <th class="text-center" scope="col">Azioni</th>
                 </tr>
             </thead>
@@ -19,6 +20,11 @@
                         <td>{{ $post->slug }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->name }}</td>
+                        <td>
+                            @foreach ($post->tags as $tag)
+                                {{ $tag->name }}{{ $loop->last ? '' : ', ' }}
+                            @endforeach
+                        </td>
 
                        @auth
                         <td class="d-flex justify-content-around">
